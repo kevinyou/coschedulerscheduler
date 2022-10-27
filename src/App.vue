@@ -3,6 +3,7 @@ import { onMounted, ref } from "vue";
 import { getRepos, type RepoMetadata } from "./services/githubService";
 import MainPageHeader from "./components/MainPageHeader.vue";
 import CommitStats from "./components/CommitStats.vue";
+import GithubButton from "vue-github-button";
 
 const OWNER = "lrdwhyt";
 const REPO = "coscheduler";
@@ -41,6 +42,15 @@ onMounted(async () => {
       </p>
 
       <p>The owner of coscheduler is {{ repoMetadata.owner.login }}.</p>
+      <!-- Place this tag where you want the button to render. -->
+      <github-button
+        href="https://github.com/lrdwhyt/coscheduler/subscription"
+        data-icon="octicon-eye"
+        data-size="large"
+        data-show-count="true"
+        aria-label="Watch lrdwhyt/coscheduler on GitHub"
+        >Watch</github-button
+      >
     </div>
     <div v-else>Loading...</div>
     <CommitStats :owner="owner" :repo="repo" />
